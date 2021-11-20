@@ -167,8 +167,6 @@ export const postComment = (campsiteId, rating, author, text) => dispatch => {
     console.log('Checking for the newComment object...');
     console.log(newComment);
     setTimeout(() => {
-        console.log(campsiteId, rating, author, text);
-        console.log('Timing out for 2 seconds...');
         dispatch(addComment(newComment));
     }, 2000);
 
