@@ -141,3 +141,40 @@ export const addPartners = partners => ({
     type: ActionTypes.ADD_PARTNERS,
     payload: partners
 });
+
+export const postFavorite = campsiteId => dispatch => {
+    setTimeout(() => {
+        dispatch(addFavorite(campsiteId));
+    }, 2000);
+};
+
+export const addFavorite = campsiteId => ({
+    type: ActionTypes.ADD_FAVORITE,
+    payload: campsiteId
+});
+
+export const postComment = (campsiteId, rating, author, text) => dispatch => {
+    console.log('postComment Action Created....');
+    const newComment = {
+        campsiteId,
+        rating,
+        author,
+        text
+    };
+
+    newComment.date = new Date().toISOString();
+
+    console.log('Checking for the newComment object...');
+    console.log(newComment);
+    setTimeout(() => {
+        console.log(campsiteId, rating, author, text);
+        console.log('Timing out for 2 seconds...');
+        dispatch(addComment(newComment));
+    }, 2000);
+
+};
+
+export const addComment = comment => ({
+    type: ActionTypes.ADD_COMMENT,
+    payload: comment
+});
